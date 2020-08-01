@@ -1,0 +1,43 @@
+In World Cup cricket match, ICC has decided to use Group tournament ranking unlike the simple knock out system. Teams are divided in two pools and the teams in the same pool will compete against each other. Consider a hypothetical situation where n teams have played with every other team except (n + 1)th team in each pool (India in Pool I and Pakistan in Pool II). (n + 1)th team in each pool will play a set of m matches. Your task is to calculate the rank after each match for India and Pakistan based on the scores of the teams in their respective pools and decide which team among India and Pakistan is more likely to enter semi finals. You will be given 2 arrays of size n containing scores of n teams corresponding to Pools I and II. The scores will be in descending order. In addition there are two more arrays of size m containing cumulative scores of India and Pakistan in ascending order.
+
+Rank updation rules are :
+
+1) The team with the highest score is ranked 1.
+
+2) Team with the same score receive the same rank.
+
+3) Rank increases by 1 for each distinct, lower score.
+
+Input Format
+
+The first line is an integer n representing the number of teams in each group except India and Pakistan. The second line is an integer m representing the number of matches. The next two lines will be the score table of teams in Pool I and the scores of India in m matches. This is then followed by the score table of teams in Pool II and the scores of Pakistan in m matches in the next two lines.
+
+Constraints
+
+1 ≤ n ≤ 2 * pow(10,5)
+
+1 ≤ m ≤ 2 * pow(10,5)
+
+0 ≤ pointTableGroupI[i] ≤ pow(10,9) for 0≤i
+
+0 ≤ cumPointInd[j] ≤ pow(10,9) for 0≤j
+
+0 ≤ pointTableGroupII[i] ≤ pow(10,9) for 0≤i
+
+0 ≤ cumPointPak[j] ≤ pow(10,9) for 0≤j
+
+Output Format
+
+One line consisting of a string S in capital letters, which is then followed by the corresponding points and the values in final rank array. All the values are separated by space. The string S can take 3 values INDIA, PAKISTAN, TIE.
+
+Sample Input 0
+
+8
+5
+93 67 52 48 46 32 24 1 
+16 48 74 77 106 
+113 113 53 41 41 28 18 5 
+6 27 59 133 133 
+Sample Output 0
+
+PAKISTAN 2 6 5 2 1 1 
