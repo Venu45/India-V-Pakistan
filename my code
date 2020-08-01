@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main()  {
+    long int n,m;
+    int k=0;int p=0;
+    scanf("%ld",&n);
+    scanf("%ld",&m);
+    long int pool1[n];
+    long int pool2[n];
+    long int ind[m];
+     long int pak[m];
+    for( p=0;p<n;p++)
+    {
+        scanf("%ld",&pool1[p]);
+    }
+    for( k=0;k<m;k++)
+    {
+        scanf("%ld",&ind[k]);
+    }
+    for(p=0;p<n;p++)
+    {
+        scanf("%ld",&pool2[p]);
+    }
+    for( k=0;k<m;k++)
+    {
+        scanf("%ld",&pak[k]);
+    }
+    int rank1[n];
+    int rank2[n];
+    rank1[0]=1;
+    rank2[0]=1;
+    int indrank[m];
+    int pakrank[m];
+    for(int i=0;i<n-1;i++){
+       //printf("%d\t",rank1[i]);//
+        if(pool1[i]>pool1[i+1]){rank1[i+1]=rank1[i]+1;}
+        if(pool1[i]==pool1[i+1]){rank1[i+1]=rank1[i];}
+      // printf("%d\t",rank2[i]);//
+        if(pool2[i]>pool2[i+1]){rank2[i+1]=rank2[i]+1;}
+        else{rank2[i+1]=rank2[i];}
+    }
+    int i=n-1;
+    for( k=0;k<m;k++)
+    {
+    
+        while(i>=0)
+        {
+            if(pool1[i]>ind[k]){indrank[k]=rank1[i]+1;break;}
+            if(pool1[i]==ind[k]){indrank[k]=rank1[i];break;}
+            i=i-1;
+             
+        }
+       if(i<0)indrank[k]=1; 
+    }
+    i=n-1;
+        for( k=0;k<m;k++)
+    {
+    
+        while(i>=0)
+        {
+            if(pool2[i]>pak[k]){pakrank[k]=rank2[i]+1;break;}
+            if(pool2[i]==pak[k]){pakrank[k]=rank2[i];break;}
+            i=i-1;
+             
+        }
+       if(i<0)pakrank[k]=1; 
+    }
+    
+    int india,pakis;
+    india=0;pakis=0;
+    for( k=0;k<m;k++)
+    {
+        if(indrank[k]<pakrank[k]){india++;}
+        if(indrank[k]>pakrank[k]){pakis++;}
+    }
+    if(india>=pakis)
+    {
+        printf("INDIA");
+        printf(" %d",india);
+        for(int p=0;p<m;p++){
+            printf(" %d",indrank[p]);
+        }
+    }
+    else
+    {
+        printf("PAKISTAN");
+        printf(" %d",pakis);
+        for(int q=0;q<m;q++)
+        {
+            printf(" %d",pakrank[q]);
+        }
+    } 
+}
